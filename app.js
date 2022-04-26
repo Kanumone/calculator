@@ -5,11 +5,11 @@ let firstNumber = (secondNumber = operator = "");
 
 buttons.forEach((button) => {
   button.addEventListener("mousedown", () => {
-    button.style.cssText = "background-color: white; transform: scale(1.05);";
+    button.style.cssText = "opacity: 50%; transform: scale(1.05);";
   });
 
   button.addEventListener("mouseup", () => {
-    button.style.cssText = "background-color: ; transform: scale(1);";
+    button.style.cssText = "opacity: 100%; transform: scale(1);";
   });
 
   button.addEventListener("click", () => {
@@ -27,18 +27,17 @@ function mainProcess(button) {
   } else if (input === "number" && operator) {
     secondNumber += value;
     display.textContent = secondNumber;
-    console.log(secondNumber);
   } else if (input === "AC") {
     firstNumber = secondNumber = operator = "";
-    display.textContent = "";
+    display.textContent = "0";
   } else if (input === "operator") {
     operator = value;
   } else {
-    makeOperation();
+    if (operator) operate();
   }
 }
 
-function makeOperation() {
+function operate() {
   if (!secondNumber) {
     secondNumber = firstNumber;
   }
